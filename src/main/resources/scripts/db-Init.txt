@@ -1,0 +1,15 @@
+create table `User` ( 	id int primary key auto_increment,
+			userName varchar(20),
+			tel  varchar(15),
+			email varchar(50),
+			pwd varchar(25) );
+
+		create table `Role` ( 	id int primary key auto_increment,
+			name varchar(20),
+			description  varchar(15));
+
+				create table privilege ( 	id int primary key auto_increment,
+			name varchar(20),
+			description  varchar(15));
+		
+		
