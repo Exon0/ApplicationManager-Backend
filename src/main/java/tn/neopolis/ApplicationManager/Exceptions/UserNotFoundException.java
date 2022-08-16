@@ -1,6 +1,6 @@
 package tn.neopolis.ApplicationManager.Exceptions;
 
-public class UserNotFoundException {
+public class UserNotFoundException extends Exception{
     private String message;
    public UserNotFoundException(String message)
    {

@@ -2,9 +2,7 @@ package tn.neopolis.ApplicationManager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.services.UserService;
 
@@ -23,4 +21,30 @@ public class UserController {
         List<User> USERS = userService.getAllUsers();
         return USERS ;
     }
+
+    @GetMapping(value = "/{id}")
+    public User getUserById(@PathVariable Long id){
+        return userService.getUserById(id);
+    }
+
+    @PostMapping(value = "")
+    public User addUser(@RequestBody User user){
+        User user1 = userService.createUser(user);
+        return user1;
+    }
+    @PutMapping(value = "")
+        public User updateUser(@RequestBody User user){
+            return userService.updateUser(user);
+        }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUserById(id);
+    }
+
+    @DeleteMapping(value ="")
+    public void deleteUser(){
+        userService.deleteAllUsers();
+    }
+
 }

@@ -1,12 +1,11 @@
 package tn.neopolis.ApplicationManager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@ToString(exclude = "invoice")
-@EqualsAndHashCode(exclude = "invoice")
 @Entity
 @Table(name = "privilege")
 @AllArgsConstructor
@@ -24,9 +23,13 @@ public class Privilege {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @ManyToMany(mappedBy = "privileges")
     private Set<Role> roles;
 
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @ManyToMany(mappedBy = "Uprivileges")
     private Set<User> users;
 }

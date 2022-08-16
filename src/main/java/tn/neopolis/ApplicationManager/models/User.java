@@ -9,8 +9,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-@ToString(exclude = "invoice")
-@EqualsAndHashCode(exclude = "invoice")
+
 @Entity
 @Table(name = "user")
 @AllArgsConstructor
@@ -34,24 +33,23 @@ public class User {
     @Column(name = "pwd")
     private String pwd;
 
-    @JsonIgnore
+
     @ManyToMany
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "user_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Set<Role> roles = new HashSet<>();
+                    name = "role_id"))
+    private Set<Role> roles ;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "users_privileges",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "user_id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "privilege_id", referencedColumnName = "id"))
-    private Set<Privilege> Uprivileges = new HashSet<>();
+                    name = "privilege_id"))
+    private Set<Privilege> Uprivileges ;
 
 }

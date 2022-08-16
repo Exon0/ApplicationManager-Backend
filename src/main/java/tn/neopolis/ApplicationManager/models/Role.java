@@ -9,8 +9,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-@ToString(exclude = "invoice")
-@EqualsAndHashCode(exclude = "invoice")
+
 @Entity
 @Table(name = "role")
 @AllArgsConstructor
@@ -28,11 +27,11 @@ public class Role {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude @ToString.Exclude
     @ManyToMany(mappedBy = "roles")
     private Set<User> users=new HashSet<>();
 
-    @JsonIgnore
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope= ServerRequest.class)
     @ManyToMany
     @JoinTable(
             name = "roles_privileges",
