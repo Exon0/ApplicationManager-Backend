@@ -1,4 +1,4 @@
-# KhlelaByYasmine
+# ApplicationManager
 
 ## Documentation technique
 ### Versions des différents composants de l'application
