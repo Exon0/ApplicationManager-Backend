@@ -1,10 +1,7 @@
 package tn.neopolis.ApplicationManager.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
-import org.springframework.web.servlet.function.ServerRequest;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -29,7 +26,7 @@ public class Role {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude @ToString.Exclude
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "roles")
     private Set<User> users=new HashSet<>();
 
     @ManyToMany

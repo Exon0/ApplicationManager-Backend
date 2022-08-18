@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tn.neopolis.ApplicationManager.Exceptions.PrivilegeNotFoundException;
-import tn.neopolis.ApplicationManager.Exceptions.RoleNotFoundException;
 import tn.neopolis.ApplicationManager.models.Privilege;
-import tn.neopolis.ApplicationManager.models.Role;
 import tn.neopolis.ApplicationManager.services.PrivilegeService;
-import tn.neopolis.ApplicationManager.services.RoleService;
 
 import java.util.List;
 
