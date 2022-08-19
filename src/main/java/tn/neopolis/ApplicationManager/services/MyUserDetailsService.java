@@ -6,10 +6,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import tn.neopolis.ApplicationManager.DTO.MyUserLogin;
+import tn.neopolis.ApplicationManager.configuration.MethodSecurityConfig;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.repositories.UserRepository;
 
-@Service
+@Service("MyUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
    /* @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -20,12 +21,15 @@ public class MyUserDetailsService implements UserDetailsService {
    @Autowired
     private UserRepository userRepository;
 
+
+   private User user;
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUserName(username);
+         this.user = userRepository.findByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
         return new MyUserLogin(user);
     }
+
 }

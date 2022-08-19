@@ -1,14 +1,21 @@
 package tn.neopolis.ApplicationManager.DTO;
 
+import lombok.NoArgsConstructor;
+import org.springframework.security.access.PermissionEvaluator;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+import tn.neopolis.ApplicationManager.models.Privilege;
 import tn.neopolis.ApplicationManager.models.Role;
 import tn.neopolis.ApplicationManager.models.User;
 
+import java.io.Serializable;
 import java.util.*;
 
-
+@NoArgsConstructor
+@Component
 public class MyUserLogin implements UserDetails {
     private User user;
 
@@ -57,4 +64,6 @@ public class MyUserLogin implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }

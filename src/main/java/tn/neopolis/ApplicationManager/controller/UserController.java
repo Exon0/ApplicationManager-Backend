@@ -1,6 +1,7 @@
 package tn.neopolis.ApplicationManager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tn.neopolis.ApplicationManager.models.User;
@@ -16,12 +17,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping(value = "")
     public List<User> getUsers(){
         List<User> USERS = userService.getAllUsers();
         return USERS ;
     }
-
+    //@PreAuthorize("hasPermission(#id, 'supprimerUser')")
     @GetMapping(value = "/{id}")
     public User getUserById(@PathVariable Long id){
         return userService.getUserById(id);

@@ -26,7 +26,7 @@ public class Role {
 
     @JsonIgnore
     @EqualsAndHashCode.Exclude @ToString.Exclude
-    @OneToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "role")
     private Set<User> users=new HashSet<>();
 
     @ManyToMany
