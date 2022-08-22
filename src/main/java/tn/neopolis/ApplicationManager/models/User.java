@@ -1,6 +1,7 @@
 package tn.neopolis.ApplicationManager.models;
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +37,7 @@ public class User {
                     name = "role_id"))
     private Role role ;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_privileges",
             joinColumns = @JoinColumn(

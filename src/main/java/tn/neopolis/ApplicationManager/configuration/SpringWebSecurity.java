@@ -13,6 +13,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.services.MyUserDetailsService;
 
@@ -33,7 +35,7 @@ public class SpringWebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests().anyRequest()
-                .hasAuthority("Admin").and().httpBasic().authenticationEntryPoint(authenticationEntryPoint).and()
+                .hasAuthority("Admin").and().httpBasic().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
@@ -49,10 +51,6 @@ public class SpringWebSecurity extends WebSecurityConfigurerAdapter {
         // NoOp pour ne pas vérifier le hashage des mdp
         // TODO : Sauvegarder les mot de passe de façon hashé en bdd
         return NoOpPasswordEncoder.getInstance();
-    }
-    @Bean
-    public UserDetailsService UserDetailsService() {
-        return new MyUserDetailsService();
     }
 
 

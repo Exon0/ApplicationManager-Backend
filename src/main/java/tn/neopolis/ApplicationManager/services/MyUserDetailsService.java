@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import tn.neopolis.ApplicationManager.DTO.MyUserLogin;
 import tn.neopolis.ApplicationManager.configuration.MethodSecurityConfig;
 import tn.neopolis.ApplicationManager.models.User;
@@ -18,14 +20,14 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 */
 
-   @Autowired
+    @Autowired
     private UserRepository userRepository;
 
 
-   private User user;
+    private User user;
     @Override
     public UserDetails loadUserByUsername(String username) {
-         this.user = userRepository.findByUserName(username);
+        this.user = userRepository.findByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

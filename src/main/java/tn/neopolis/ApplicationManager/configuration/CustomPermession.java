@@ -7,6 +7,9 @@ import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import tn.neopolis.ApplicationManager.DTO.MyUserLogin;
 import tn.neopolis.ApplicationManager.models.Privilege;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.repositories.UserRepository;
@@ -14,14 +17,14 @@ import tn.neopolis.ApplicationManager.services.MyUserDetailsService;
 import tn.neopolis.ApplicationManager.services.UserService;
 
 import java.io.Serializable;
+
 @Configuration
 @Component
 public class CustomPermession implements PermissionEvaluator {
 
-    @Autowired
-    @Qualifier("MyUserDetailsService")
-    private MyUserDetailsService myUserDetailsService;//
-
+    //  @Autowired
+    // @Qualifier("MyUserDetailsService")
+    // private MyUserDetailsService myUserDetailsService;
 
 
     @Override
@@ -46,11 +49,14 @@ public class CustomPermession implements PermissionEvaluator {
     }
 
 
+
+
+
     private boolean hasPrivilege(Authentication auth, String targetType, String permission) {
-        User user=(User) myUserDetailsService.loadUserByUsername("ilyes");
+        // User user= ((MyUserLogin) myUserDetailsService.loadUserByUsername(auth.getName())).getUser();
+        User user = ((MyUserLogin) auth.getPrincipal()).getUser();
         for (Privilege privilege : user.getUprivileges()) {
-            if (privilege.getName().startsWith(targetType) &&
-                    privilege.getName().contains(permission)) {
+            if (privilege.getName().toUpperCase().equals(permission)) {
                 return true;
             }
 
@@ -58,5 +64,5 @@ public class CustomPermession implements PermissionEvaluator {
         return false;
     }
 
-    }
+}
 

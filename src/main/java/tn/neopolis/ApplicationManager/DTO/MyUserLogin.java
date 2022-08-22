@@ -1,6 +1,8 @@
 package tn.neopolis.ApplicationManager.DTO;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +19,9 @@ import java.util.*;
 @NoArgsConstructor
 @Component
 public class MyUserLogin implements UserDetails {
+
+    @Getter
+    @Setter
     private User user;
 
     public MyUserLogin(User user) {
@@ -28,7 +33,7 @@ public class MyUserLogin implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
 
-            list.add(new SimpleGrantedAuthority(user.getRole().getName()));
+        list.add(new SimpleGrantedAuthority(user.getRole().getName()));
 
 
         return list;

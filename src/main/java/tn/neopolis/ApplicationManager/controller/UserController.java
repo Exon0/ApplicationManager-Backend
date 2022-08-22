@@ -3,6 +3,8 @@ package tn.neopolis.ApplicationManager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.services.UserService;
@@ -23,10 +25,11 @@ public class UserController {
         List<User> USERS = userService.getAllUsers();
         return USERS ;
     }
-    //@PreAuthorize("hasPermission(#id, 'supprimerUser')")
+    @PreAuthorize("hasPermission(#id, 'supp_rimerUser')")
     @GetMapping(value = "/{id}")
     public User getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
+        User user = userService.getUserById(id);
+        return user;
     }
 
     @PostMapping(value = "")
@@ -35,9 +38,9 @@ public class UserController {
         return user1;
     }
     @PutMapping(value = "")
-        public User updateUser(@RequestBody User user){
-            return userService.updateUser(user);
-        }
+    public User updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
 
     @DeleteMapping(value = "/{id}")
     public void deleteUser(@PathVariable Long id){
