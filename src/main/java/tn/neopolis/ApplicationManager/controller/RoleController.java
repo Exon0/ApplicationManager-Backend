@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import tn.neopolis.ApplicationManager.Exceptions.RoleNotFoundException;
 import tn.neopolis.ApplicationManager.models.Role;
-import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.services.RoleService;
 
 import java.util.List;

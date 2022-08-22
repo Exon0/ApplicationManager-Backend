@@ -11,5 +11,28 @@ create table `User` ( 	id int primary key auto_increment,
 				create table privilege ( 	id int primary key auto_increment,
 			name varchar(20),
 			description  varchar(15));
+
+
+			
+						create table users_roles ( 	id int primary key auto_increment,
+			user_id  int,
+			role_id  int,
+				FOREIGN KEY (user_id) REFERENCES `user`(id),
+				FOREIGN KEY (role_id) REFERENCES `role`(id)
+
+	);
 		
+					create table roles_privileges ( id int primary key auto_increment, 
+		role_id int,	
+		privilege_id  int,
+				FOREIGN KEY (role_id) REFERENCES `role`(id),
+				FOREIGN KEY (privilege_id) REFERENCES privilege(id)
+);
 		
+				create table users_privileges ( 	id int primary key auto_increment,
+			user_id int,
+			privilege_id  int,
+				FOREIGN KEY (user_id) REFERENCES `user`(id),
+				FOREIGN KEY (privilege_id) REFERENCES privilege(id)
+
+);	

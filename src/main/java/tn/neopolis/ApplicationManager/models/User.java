@@ -1,13 +1,7 @@
 package tn.neopolis.ApplicationManager.models;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
-import org.springframework.web.servlet.function.ServerRequest;
-
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,16 +28,16 @@ public class User {
     private String pwd;
 
 
-    @ManyToMany
+    @ManyToOne
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
                     name = "user_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id"))
-    private Set<Role> roles ;
+    private Role role ;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_privileges",
             joinColumns = @JoinColumn(
