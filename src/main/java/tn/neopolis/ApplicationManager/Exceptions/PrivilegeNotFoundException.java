@@ -1,4 +1,4 @@
-package tn.neopolis.ApplicationManager.Exceptions;
+package tn.neopolis.ApplicationManager.exceptions;
 
 public class PrivilegeNotFoundException extends Exception{
     private String message;

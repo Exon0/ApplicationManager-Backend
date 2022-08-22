@@ -34,9 +34,10 @@ public class SpringWebSecurity extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().anyRequest()
-                .hasAuthority("Admin").and().httpBasic().and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.csrf().disable().authorizeRequests().anyRequest().hasAuthority("Admin")
+                .and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
+                .and().httpBasic()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
 

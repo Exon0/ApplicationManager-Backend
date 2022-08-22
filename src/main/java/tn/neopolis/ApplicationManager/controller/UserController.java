@@ -3,9 +3,8 @@ package tn.neopolis.ApplicationManager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import tn.neopolis.ApplicationManager.exceptions.UserNotFoundException;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.services.UserService;
 
@@ -27,7 +26,7 @@ public class UserController {
     }
     @PreAuthorize("hasPermission(#id, 'supp_rimerUser')")
     @GetMapping(value = "/{id}")
-    public User getUserById(@PathVariable Long id){
+    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
         User user = userService.getUserById(id);
         return user;
     }

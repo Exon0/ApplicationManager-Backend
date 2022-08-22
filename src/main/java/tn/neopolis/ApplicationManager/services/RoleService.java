@@ -2,7 +2,7 @@ package tn.neopolis.ApplicationManager.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.neopolis.ApplicationManager.Exceptions.RoleNotFoundException;
+import tn.neopolis.ApplicationManager.exceptions.RoleNotFoundException;
 import tn.neopolis.ApplicationManager.models.Role;
 import tn.neopolis.ApplicationManager.repositories.RoleRepository;
 

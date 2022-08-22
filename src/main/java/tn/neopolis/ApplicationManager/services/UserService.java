@@ -1,9 +1,9 @@
 package tn.neopolis.ApplicationManager.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import tn.neopolis.ApplicationManager.exceptions.UserNotFoundException;
 import tn.neopolis.ApplicationManager.models.User;
 import tn.neopolis.ApplicationManager.repositories.UserRepository;
 
@@ -19,9 +19,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(Long id) throws UserNotFoundException {
 
-        return userRepository.findById(id).orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User Not Found"));
     }
 
     public User createUser(User user){

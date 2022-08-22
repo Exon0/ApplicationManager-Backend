@@ -3,7 +3,7 @@ package tn.neopolis.ApplicationManager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import tn.neopolis.ApplicationManager.Exceptions.PrivilegeNotFoundException;
+import tn.neopolis.ApplicationManager.exceptions.PrivilegeNotFoundException;
 import tn.neopolis.ApplicationManager.models.Privilege;
 import tn.neopolis.ApplicationManager.services.PrivilegeService;
 

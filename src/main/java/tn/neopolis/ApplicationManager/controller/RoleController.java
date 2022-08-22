@@ -3,7 +3,7 @@ package tn.neopolis.ApplicationManager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import tn.neopolis.ApplicationManager.Exceptions.RoleNotFoundException;
+import tn.neopolis.ApplicationManager.exceptions.RoleNotFoundException;
 import tn.neopolis.ApplicationManager.models.Role;
 import tn.neopolis.ApplicationManager.services.RoleService;
 

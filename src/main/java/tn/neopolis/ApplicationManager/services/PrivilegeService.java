@@ -2,7 +2,7 @@ package tn.neopolis.ApplicationManager.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.neopolis.ApplicationManager.Exceptions.PrivilegeNotFoundException;
+import tn.neopolis.ApplicationManager.exceptions.PrivilegeNotFoundException;
 import tn.neopolis.ApplicationManager.models.Privilege;
 import tn.neopolis.ApplicationManager.repositories.PrivilegeRepository;
 
