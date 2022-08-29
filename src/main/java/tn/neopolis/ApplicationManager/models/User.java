@@ -8,7 +8,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+
+    public User(Long id, String userName, String email, String pwd) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.pwd = pwd;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

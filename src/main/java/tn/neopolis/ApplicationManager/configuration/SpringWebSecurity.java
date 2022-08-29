@@ -49,7 +49,6 @@ public class SpringWebSecurity extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // NoOp pour ne pas vérifier le hashage des mdp
         // TODO : Sauvegarder les mot de passe de façon hashé en bdd
         return NoOpPasswordEncoder.getInstance();
     }
