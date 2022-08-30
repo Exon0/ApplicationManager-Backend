@@ -2,23 +2,27 @@
 
 package tn.neopolis.ApplicationManager.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "candidate")
 @PrimaryKeyJoinColumn(name = "id")
 @Data
-public class Candidate extends User{
-
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+public class Candidate extends User {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-
+    private Integer id;
 
 
     @Column(name = "yearsOfExperience")
@@ -33,14 +37,10 @@ public class Candidate extends User{
     private String frenchLevel;
 
     @Column(name = "cv")
-
     private String cv;
 
-    @Column(name = "motivationLetter")
-
-    private String motivationLetter;
-
-
+    @OneToMany(mappedBy = "candidate", fetch = FetchType.EAGER)
+    private Set<Application> applications;
 
 
 }

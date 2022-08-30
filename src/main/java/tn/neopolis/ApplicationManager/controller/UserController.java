@@ -26,7 +26,7 @@ public class UserController {
     }
     @PreAuthorize("hasPermission(#id, 'supp_rimerUser')")
     @GetMapping(value = "/{id}")
-    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
+    public User getUserById(@PathVariable Integer id) throws UserNotFoundException {
         User user = userService.getUserById(id);
         return user;
     }
@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public void deleteUser(@PathVariable Integer id){
         userService.deleteUserById(id);
     }
 

@@ -27,7 +27,7 @@ public class CandidateController {
 
 
     @GetMapping(value = "/{id}")
-    public Candidate getCandidateById(@PathVariable Long id) throws CandidateNotFoundException {
+    public Candidate getCandidateById(@PathVariable Integer id) throws CandidateNotFoundException {
         Candidate candidate = candidateService.getCandidateById(id);
         return candidate;
     }
@@ -46,7 +46,7 @@ public class CandidateController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void deleteCandidatebyId(@PathVariable Long id){
+    public void deleteCandidatebyId(@PathVariable Integer id){
         candidateService.deleteCandidateById(id);
     }
 

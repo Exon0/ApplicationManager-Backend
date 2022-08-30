@@ -11,7 +11,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
-    public User(Long id, String userName, String email, String pwd) {
+    public User(Integer id, String userName, String email, String pwd) {
         this.id = id;
         this.userName = userName;
         this.email = email;
@@ -20,7 +20,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "userName")
     private String userName;

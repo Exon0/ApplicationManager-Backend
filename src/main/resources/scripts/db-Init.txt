@@ -36,3 +36,24 @@ create table `User` ( 	id int primary key auto_increment,
 				FOREIGN KEY (privilege_id) REFERENCES privilege(id)
 
 );	
+
+		create table candidate ( 	id int primary key auto_increment,
+			yearsOfExperience  int,
+			englishLevel ENUM ( 'A1','A2', 'B1','B2','C1','C2'),
+			frenchLevel ENUM ( 'A1','A2', 'B1','B2','C1','C2'),
+			cv varchar(100),
+			motivationLetter varchar(100),
+			FOREIGN KEY (id) REFERENCES `user`(id)
+				
+		);
+
+			create table application ( 	id int primary key auto_increment,
+			status ENUM ('Accepted','Rejected','being processed','untreated'),
+			motivationLetter varchar(100)
+		);
+	
+					create table candidate_applications	 ( 	id int primary key auto_increment,
+			candidate_id int,
+			application_id  int,
+				FOREIGN KEY (candidate_id) REFERENCES candidate(id),
+				FOREIGN KEY (application_id) REFERENCES application(id)

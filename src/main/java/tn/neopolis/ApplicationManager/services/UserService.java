@@ -19,7 +19,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) throws UserNotFoundException {
+    public User getUserById(Integer id) throws UserNotFoundException {
 
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User Not Found"));
     }
@@ -32,7 +32,7 @@ public class UserService {
         return userRepository.save(user);
 
     }
-    public void deleteUserById(Long id){
+    public void deleteUserById(Integer id){
         userRepository.deleteById(id);
     }
     public void deleteAllUsers(){
