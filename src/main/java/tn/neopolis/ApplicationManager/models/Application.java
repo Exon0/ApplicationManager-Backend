@@ -28,13 +28,15 @@ public class Application {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne
-    @JoinTable(
-            name = "candidate_applications",
-            joinColumns = @JoinColumn(
-                    name = "application_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "candidate_id"))
+    @JoinColumn(name="candidate_id", nullable=false)
     private Candidate candidate;
+
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name="offer_id", nullable=false)
+    private Offer offer;
 
 
 }

@@ -36,8 +36,7 @@ create table `User` ( 	id int primary key auto_increment,
 				FOREIGN KEY (privilege_id) REFERENCES privilege(id)
 
 );	
-
-		create table candidate ( 	id int primary key auto_increment,
+	create table candidate ( 	id int primary key auto_increment,
 			yearsOfExperience  int,
 			englishLevel ENUM ( 'A1','A2', 'B1','B2','C1','C2'),
 			frenchLevel ENUM ( 'A1','A2', 'B1','B2','C1','C2'),
@@ -46,14 +45,28 @@ create table `User` ( 	id int primary key auto_increment,
 			FOREIGN KEY (id) REFERENCES `user`(id)
 				
 		);
-
-			create table application ( 	id int primary key auto_increment,
+	
+	
+		create table application ( 	id int primary key auto_increment,
 			status ENUM ('Accepted','Rejected','being processed','untreated'),
-			motivationLetter varchar(100)
+			motivationLetter varchar(100),
+			offer_id int,
+			candidate_id int,
+				FOREIGN KEY (offer_id) REFERENCES offer(id),
+				FOREIGN KEY (candidate_id) REFERENCES candidate(id)
+
 		);
 	
-					create table candidate_applications	 ( 	id int primary key auto_increment,
-			candidate_id int,
-			application_id  int,
-				FOREIGN KEY (candidate_id) REFERENCES candidate(id),
-				FOREIGN KEY (application_id) REFERENCES application(id)
+
+	
+			create table offer ( 	id int primary key auto_increment,
+			`type`  ENUM('Internship','alternation','job'),
+			title varchar(100),
+			deadline varchar(15) ,
+			description varchar(1000),
+			internshipDuration varchar(20),
+			experienceRequired int,
+			salary double
+				
+		);
+		
